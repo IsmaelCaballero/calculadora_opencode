@@ -13,7 +13,7 @@ hasta elegir salir, lectura de 2 operandos por teclado e impresión del resultad
 
 - JDK: OpenJDK 25 (compila a target 17)
 - Maven: 3.9.16 (instalado manualmente en `~/tools/apache-maven-3.9.16`, usar `~/tools/apache-maven-3.9.16/bin/mvn`)
-- Git: identidad local `ismael <ismael@localhost>` (solo de este repo)
+- Git: identidad `Ismael Caballero <Ismael.Caballero@uclm.es>` (solo de este repo)
 
 ## Plan de iteraciones
 
