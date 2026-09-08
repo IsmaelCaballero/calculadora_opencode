@@ -11,6 +11,39 @@ import java.util.Optional;
  */
 public class Main {
 
+    /**
+     * El constructor está implícito (por defecto); la clase solo
+     * contiene métodos estáticos, así que no necesita instancia.
+     */
+    public Main() {
+    }
+
+    /**
+     * Punto de entrada de la aplicación.
+     *
+     * <p>Flujo de ejecución:</p>
+     * <ol>
+     *   <li>Saluda al usuario.</li>
+     *   <li>Entra en un bucle que, en cada iteración:
+     *     <ol>
+     *       <li>Imprime el {@link Menu menú de opciones}.</li>
+     *       <li>Lee la opción elegida ({@link InputReader#leerOpcion(int)}).</li>
+     *       <li>Si la opción es {@link Menu#OPCION_SALIR}, termina.</li>
+     *       <li>Lee los dos operandos ({@link InputReader#leerOperando(String)}).</li>
+     *       <li>Descarga la operación correspondiente a {@link Calculator}
+     *           e imprime el resultado formateado.</li>
+     *     </ol>
+     *   </li>
+     *   <li>Libera la {@link InputReader} y termina.</li>
+     * </ol>
+     *
+     * <p>Todos los errores de entrada (opción inválida, operando no
+     * numérico, división por cero) se comunican al usuario y el bucle
+     * continúa; la aplicación no se interrumpe ante entradas inválidas.</p>
+     *
+     * @param args argumentos de línea de comandos. No se utilizan;
+     *             el programa siempre se maneja por teclado interactivo.
+     */
     public static void main(String[] args) {
         Calculator calc = new Calculator();
         Menu menu = new Menu();
@@ -89,7 +122,19 @@ public class Main {
     }
 
     /**
-     * Formatea un double para mostrarlo sin el trailing ".0" si es entero.
+     * Convierte un resultado numérico a una cadena apta para
+     * mostrar al usuario, limpiando los decimales sobrantes.
+     *
+     * <ul>
+     *   <li>{@code 5.0} &rarr; {@code "5"}</li>
+     *   <li>{@code 1.5} &rarr; {@code "1.5"}</li>
+     *   <li>{@code Infinity} &rarr; {@code "Infinito"}</li>
+     *   <li>{@code -Infinity} &rarr; {@code "-Infinito"}</li>
+     * </ul>
+     *
+     * @param valor resultado de la operación a mostrar.
+     * @return la representación formateada, sin sufijo {@code .0}
+     *         si el valor es un entero.
      */
     static String formatear(double valor) {
         if (Double.isInfinite(valor)) {

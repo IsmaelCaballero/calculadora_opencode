@@ -22,6 +22,7 @@ hasta elegir salir, lectura de 2 operandos por teclado e impresión del resultad
 | 1 | Estructura Maven + dominio `Calculator` (4 operaciones) + tests JUnit | ✅ Completada |
 | 2 | CLI: `Menu`, `InputReader`, `Main` con bucle de opciones | ✅ Completada |
 | 3 | Robustez: opción inválida, operandos no numéricos, división por cero sin crash + tests | ✅ Completada |
+| 4 | Documentación Javadoc de todas las públicas + `mvn javadoc:javadoc` sin errores | ✅ Completada |
 
 ## Estructura
 
@@ -47,6 +48,7 @@ calculadora/
 ~/tools/apache-maven-3.9.16/bin/mvn test      # tests de unidad
 ~/tools/apache-maven-3.9.16/bin/mvn compile
 java -cp target/classes progia.calculadora.Main
+~/tools/apache-maven-3.9.16/bin/mvn javadoc:javadoc  # docs en target/reports/apidocs
 ```
 
 ## Decisiones de diseño
@@ -62,6 +64,7 @@ java -cp target/classes progia.calculadora.Main
 
 ## Estado actual
 
-✅ **Proyecto completo.** 3 iteraciones entregadas, 16 tests de unidad
+✅ **Proyecto completo.** 4 iteraciones entregadas, 16 tests de unidad
 verdes, flujo interactivo verificado (entradas inválidas, división por
-cero y salida se gestionan sin crash).
+cero y salida se gestionan sin crash). Documentación Javadoc de toda la
+API pública; `mvn javadoc:javadoc` genera sin errores.
