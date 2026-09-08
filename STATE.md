@@ -21,7 +21,7 @@ hasta elegir salir, lectura de 2 operandos por teclado e impresión del resultad
 |---|---------|--------|
 | 1 | Estructura Maven + dominio `Calculator` (4 operaciones) + tests JUnit | ✅ Completada |
 | 2 | CLI: `Menu`, `InputReader`, `Main` con bucle de opciones | ✅ Completada |
-| 3 | Robustez: opción inválida, operandos no numéricos, división por cero sin crash + tests | ⏳ Pendiente |
+| 3 | Robustez: opción inválida, operandos no numéricos, división por cero sin crash + tests | ✅ Completada |
 
 ## Estructura
 
@@ -36,7 +36,9 @@ calculadora/
     │   ├── InputReader.java   (lectura Scanner)
     │   └── Calculator.java    (dominio: sumar/restar/multiplicar/dividir)
     └── test/java/progia/calculadora/
-        └── CalculatorTest.java (5 tests)
+        ├── CalculatorTest.java (5 tests)
+        ├── InputReaderTest.java (8 tests)
+        └── MainTest.java      (3 tests)
 ```
 
 ## Cómo usar
@@ -50,13 +52,16 @@ java -cp target/classes progia.calculadora.Main
 ## Decisiones de diseño
 
 - `Calculator` es puro y testable; no depende de I/O.
-- Operandos `double` para soportar decimales.
+- `InputReader` devuelve `Optional` en vez de lanzar excepciones: el
+  llamador decide cómo reaccionar ante entradas inválidas. Constructor
+  de paquete acepta un `Scanner` inyectado para testear.
+- Operandos `double` para soportar decimales (admite coma decimal).
 - `formatear()` en Main evita el ".0" cuando el resultado es entero.
 - `Scanner` con charset UTF-8.
+- `Main` captura `IllegalArgumentException` de división por cero.
 
-## Próximos pasos
+## Estado actual
 
-Iteración 3: capturar `NumberFormatException` en `InputReader`,
-validar rango de opción del menú, y en `Main` capturar
-`IllegalArgumentException` de división por cero. Añadir tests de
-`InputReader` si es posible con `System.setIn`.
+✅ **Proyecto completo.** 3 iteraciones entregadas, 16 tests de unidad
+verdes, flujo interactivo verificado (entradas inválidas, división por
+cero y salida se gestionan sin crash).
